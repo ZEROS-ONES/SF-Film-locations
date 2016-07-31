@@ -58,7 +58,7 @@ class MoviesMapViewController: UIViewController {
     
     private func showError(){
         let alertController = UIAlertController(title: "Error", message:
-            "Error while loading location Address :-(", preferredStyle: UIAlertControllerStyle.Alert)
+            "Error while loading location Address 😖", preferredStyle: UIAlertControllerStyle.Alert)
         alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Default,handler: nil))
         self.presentViewController(alertController, animated: true, completion: nil)
     }
