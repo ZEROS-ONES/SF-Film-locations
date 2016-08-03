@@ -41,17 +41,17 @@ class MoviesMapViewController: UIViewController {
             return
         }
         let geocoder: CLGeocoder = CLGeocoder()
-        geocoder.geocodeAddressString(locationString ,completionHandler: {(placemarks: [CLPlacemark]?, error: NSError?) -> Void in
+        geocoder.geocodeAddressString(locationString ,completionHandler: {[weak self](placemarks: [CLPlacemark]?, error: NSError?) -> Void in
             if (placemarks?.count > 0) {
                 let topResult: CLPlacemark = (placemarks?[0])!
                 let placemark: MKPlacemark = MKPlacemark(placemark: topResult)
-                var region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 500, 500)
-                self.mapView.setCenterCoordinate(region.center, animated: true)
-                self.mapView.setRegion(region, animated: true)
-                self.mapView.addAnnotation(placemark)
+                let region: MKCoordinateRegion = MKCoordinateRegionMakeWithDistance(placemark.coordinate, 500, 500)
+                self?.mapView.setCenterCoordinate(region.center, animated: true)
+                self?.mapView.setRegion(region, animated: true)
+                self?.mapView.addAnnotation(placemark)
             }
             else{
-                self.showError()
+                self?.showError()
             }
         })
     }

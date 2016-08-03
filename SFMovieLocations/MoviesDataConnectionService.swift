@@ -25,15 +25,15 @@ class MoviesDataConnectionService: NSObject, NSURLSessionDelegate, NSURLSessionT
         }
         let request = NSURLRequest(URL: url)
         let session = NSURLSession.sharedSession()
-        let task = session.dataTaskWithRequest(request) {(data, response, error) -> Void in
+        let task = session.dataTaskWithRequest(request) {[weak self](data, response, error) -> Void in
             if (error != nil){
                 #if DEBUG
                     print(error?.description)
                 #endif
-                self.delegate?.moviesDataWithFailure(error)
+                self?.delegate?.moviesDataWithFailure(error)
             }
             else {
-                self.delegate?.moviesDataWithSuccess(data)
+                self?.delegate?.moviesDataWithSuccess(data)
             }
         }
         //start/send request

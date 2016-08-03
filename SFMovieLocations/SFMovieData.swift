@@ -14,7 +14,7 @@ class SFMovieData: NSObject {
     internal init(withArray array: NSArray?) {
         super.init()
         if let array = array{
-            for var i = 0; i<array.count; i++ {
+            for i in 0..<array.count{
                 var movieDataWithIndex = MovieDataWithIndex()
                 movieDataWithIndex.index = i
                 movieDataWithIndex.name = getNameByIndex(i)
